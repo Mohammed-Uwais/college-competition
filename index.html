@@ -8,24 +8,23 @@
 </head>
 <body data-theme="dark">
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation Panel -->
     <header>
         <div class="logo">CAMPUS<span>COMP</span></div>
-        <button id="admin-portal-btn" class="btn-toggle">🔒 Admin Panel</button>
     </header>
 
-    <!-- Main Registration Section -->
+    <!-- User Input Registration Section -->
     <section id="registration" class="registration">
-        <h2>Participant Registration</h2>
-        <p class="section-desc">Please fill out your parameters below to lock in your competition entry.</p>
+        <h2>Secure User Registry</h2>
+        <p class="section-desc">Submit your parameters to log your profile instance directly into the cloud database.</p>
         
         <form id="userForm">
             <div class="input-group">
                 <input type="text" id="username" placeholder=" " required>
-                <label for="username">Full Name</label>
+                <label for="username">Username</label>
             </div>
             <div class="input-group">
-                <input type="number" id="age" min="15" max="99" placeholder=" " required>
+                <input type="number" id="age" min="1" max="120" placeholder=" " required>
                 <label for="age">Age</label>
             </div>
             <div class="input-group">
@@ -36,25 +35,13 @@
                 <input type="email" id="email" placeholder=" " required>
                 <label for="email">Email ID</label>
             </div>
-            <button type="submit" class="btn-submit">Submit Entry</button>
+            <button type="submit" class="btn-submit">Commit Parameters</button>
         </form>
         
         <p id="formFeedback" class="hidden"></p>
     </section>
 
-    <!-- Hidden Password-Protected Admin Section -->
-    <section id="admin-section" class="registration hidden">
-        <h2>System Administration</h2>
-        <p class="section-desc">Query live local storage maps and export participant files directly to your machine storage.</p>
-        
-        <div class="registry-actions">
-            <button id="downloadDataBtn" class="btn-primary">📥 Download Excel CSV File</button>
-            <button id="clearDataBtn" class="btn-danger">🗑️ Clear Database</button>
-        </div>
-        
-        <div id="displayArea" class="display-box"></div>
-    </section>
-
+    <!-- Base Frame Footer -->
     <footer>
         <p>&copy; 2026 Campus Events. Engineered for high performance.</p>
     </footer>
