@@ -1,4 +1,4 @@
-/* Styling Architecture Initialization */
+/* Zero-State Layout Configurations & Hardware Variable Anchors */
 * {
     margin: 0;
     padding: 0;
@@ -8,90 +8,120 @@
 }
 
 :root {
-    --bg-color: #000000;
-    --text-color: #ffffff;
-    --primary-neon: #00f0ff;
-    --secondary-neon: #ff007f;
-    --card-bg: #0a0a0c;
-    --border-color: #333333;
-    --panel-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    --bg-dark: #000000;
+    --text-bright: #ffffff;
+    --neon-cyan: #00f0ff;
+    --neon-magenta: #ff007f;
+    --neon-green: #00ff66;
+    --panel-fill: rgba(0, 0, 0, 0.85);
+    --neon-glow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2);
+    --magenta-glow: 0 0 10px rgba(255, 0, 127, 0.4), 0 0 20px rgba(255, 0, 127, 0.2);
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    background-color: var(--bg-dark);
+    color: var(--text-bright);
+    min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+/* Background Matrix Canvas Map Configuration */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+/* High Contrast Sticky Header Framework */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 8%;
-    background-color: var(--bg-color);
-    border-bottom: 2px solid var(--primary-neon);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--panel-shadow);
+    padding: 25px 5%;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 3px solid var(--neon-cyan);
+    box-shadow: var(--neon-glow);
+    z-index: 100;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 900;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    position: relative;
+    color: var(--text-bright);
 }
 
 .logo span {
-    color: var(--secondary-neon);
+    color: var(--neon-magenta);
+    text-shadow: var(--magenta-glow);
 }
 
-.btn-toggle {
-    background: transparent;
-    border: 2px solid var(--secondary-neon);
-    color: var(--text-color);
-    padding: 8px 16px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
+.system-status {
+    font-size: 13px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn-toggle:hover {
-    background-color: var(--secondary-neon);
-    box-shadow: 0 0 10px var(--secondary-neon);
-    color: #ffffff;
+.pulse-node {
+    width: 10px;
+    height: 10px;
+    background-color: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-green);
+    animation: beaconPulse 1.5s infinite ease-in-out;
 }
 
-.registration {
-    padding: 60px 10%;
+/* Dynamic Interactive Viewport Center Panel Card */
+.viewport-center {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.registration-panel {
+    background: var(--panel-fill);
+    width: 100%;
+    max-width: 550px;
+    padding: 50px 40px;
+    border: 3px solid var(--neon-cyan);
+    position: relative;
+    box-shadow: var(--neon-glow);
+    animation: panelBreathe 4s infinite alternate ease-in-out;
+}
+
+.glow-title {
+    font-size: 34px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: var(--neon-glow);
     text-align: center;
 }
 
-.registration h2 {
-    font-size: 38px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px var(--primary-neon);
-}
-
 .section-desc {
+    font-size: 13px;
+    opacity: 0.6;
     margin-bottom: 40px;
-    opacity: 0.7;
+    text-align: center;
 }
 
+/* High Contrast Reactive Form Field Components */
 form {
-    max-width: 550px;
-    margin: 0 auto;
-    background-color: var(--card-bg);
-    padding: 40px;
-    border: 2px solid var(--primary-neon);
-    box-shadow: var(--panel-shadow);
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 35px;
 }
 
 .input-group {
@@ -101,121 +131,155 @@ form {
 
 .input-group input {
     width: 100%;
-    padding: 15px 10px 5px 10px;
+    padding: 12px 10px 6px 10px;
     background: transparent;
     border: none;
-    border-bottom: 2px solid var(--border-color);
-    color: var(--text-color);
-    font-size: 16px;
+    border-bottom: 2px solid #333333;
+    color: var(--text-bright);
+    font-size: 18px;
     outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.input-group input:focus {
-    border-color: var(--secondary-neon);
 }
 
 .input-group label {
     position: absolute;
     left: 10px;
     top: 12px;
-    opacity: 0.5;
+    color: var(--text-bright);
+    opacity: 0.4;
     pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
     text-transform: uppercase;
     font-size: 14px;
-    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+/* Base Border Focus Pipeline Component Animation */
+.input-group .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.input-group .bar::before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: var(--neon-magenta);
+    transition: width 0.3s ease;
+    left: 0;
+    box-shadow: var(--magenta-glow);
+}
+
+.input-group input:focus ~ .bar::before {
+    width: 100%;
 }
 
 .input-group input:focus ~ label,
 .input-group input:not(:placeholder-shown) ~ label {
-    top: -12px;
+    top: -14px;
     font-size: 12px;
-    color: var(--secondary-neon);
+    color: var(--neon-magenta);
     opacity: 1;
+    text-shadow: var(--magenta-glow);
 }
 
-.btn-submit, .btn-primary {
-    padding: 16px;
+/* Advanced Glitch Action Button Control Layer */
+.btn-submit {
+    margin-top: 10px;
+    padding: 20px;
     background-color: transparent;
-    border: 2px solid var(--secondary-neon);
-    color: var(--secondary-neon);
+    border: 2px solid var(--neon-magenta);
+    color: var(--neon-magenta);
+    font-size: 18px;
     font-weight: bold;
-    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--magenta-glow);
+    transition: all 0.2s ease;
 }
 
 .btn-submit:hover {
-    background-color: var(--secondary-neon);
-    color: #ffffff;
-    box-shadow: 0 0 15px var(--secondary-neon);
-}
-
-.btn-primary {
-    border-color: var(--primary-neon);
-    color: var(--primary-neon);
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-neon);
+    background-color: var(--neon-magenta);
     color: #000000;
-    box-shadow: 0 0 15px var(--primary-neon);
+    box-shadow: 0 0 25px var(--neon-magenta);
+    transform: scale(1.02);
 }
 
-.registry-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
+.btn-submit:active {
+    transform: scale(0.98);
 }
 
-.btn-danger {
-    padding: 16px 25px;
-    background: transparent;
-    border: 2px solid #ff3333;
-    color: #ff3333;
+/* Real-Time Network Transmission Status Banners Layout */
+.feedback-banner {
+    margin-top: 30px;
+    padding: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid transparent;
 }
 
-.btn-danger:hover {
-    background-color: #ff3333;
-    color: #ffffff;
-    box-shadow: 0 0 10px #ff3333;
+.feedback-banner.success {
+    background-color: rgba(0, 255, 102, 0.1);
+    color: var(--neon-green);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
 }
 
-.display-box {
-    max-width: 550px;
-    margin: 30px auto 0 auto;
-    text-align: left;
-}
-
-.user-entry-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: 4px 4px 0px var(--primary-neon);
-    animation: slideIn 0.3s ease-out;
+.feedback-banner.error-msg {
+    background-color: rgba(255, 0, 127, 0.1);
+    color: var(--neon-magenta);
+    border-color: var(--neon-magenta);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
 }
 
 .hidden { display: none !important; }
-.success { color: #00ff66; font-weight: bold; margin-top: 20px; }
-.error-msg { color: #ff3333; font-weight: bold; margin-top: 20px; }
 
+/* Structural Global Document Footer Panel Layout */
 footer {
+    padding: 20px;
     text-align: center;
-    padding: 30px;
-    font-size: 13px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 1px solid #111111;
+    font-size: 11px;
+    letter-spacing: 1px;
     opacity: 0.5;
 }
 
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+/* High-Performance Hardware Accelerated Keyframe Clusters */
+@keyframes beaconPulse {
+    0% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 4px var(--neon-green); }
+    50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 14px var(--neon-green); }
+    100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 4px var(--neon-green); }
+}
+
+@keyframes panelBreathe {
+    0% { box-shadow: var(--neon-glow); border-color: var(--neon-cyan); }
+    100% { box-shadow: 0 0 25px rgba(255, 0, 127, 0.3), 0 0 40px rgba(0, 240, 255, 0.1); border-color: var(--neon-magenta); }
+}
+
+/* Typography Text Distortion Glitch FX Layers styling */
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-dark);
+}
+.glitch-text::before { left: 2px; text-shadow: -1px 0 var(--neon-cyan); clip: rect(44px, 450px, 56px, 0); animation: glitchAnim 5s infinite linear alternate-reverse; }
+.glitch-text::after { left: -2px; text-shadow: -1px 0 var(--neon-magenta); clip: rect(85px, 450px, 140px, 0); animation: glitchAnim2 5s infinite linear alternate-reverse; }
+
+@keyframes glitchAnim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    10% { clip: rect(112px, 9999px, 76px, 0); }
+    100% { clip: rect(85px, 9999px, 5px, 0); }
+}
+@keyframes glitchAnim2 {
+    0% { clip: rect(76px, 9999px, 116px, 0); }
+    11% { clip: rect(43px, 9999px, 6px, 0); }
+    100% { clip: rect(12px, 9999px, 85px, 0); }
 }
