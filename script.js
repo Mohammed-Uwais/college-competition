@@ -57,10 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
         feedback.classList.remove('hidden');
 
         // Streaming destination points directly to your Google Cloud Script deployment url macro execution array
-        fetch('https://google.com', {
+        fetch('https://script.google.com/macros/s/AKfycbwM7FDb0IdyZ1Zyu7l-8pqLaMbrhAnqif_RnfPbc2pFsxijMZMeBw3JF2Z2B2P3S-h0eg/exec', {
             method: 'POST',
             mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(participantRecord)
         })
         .then(() => {
