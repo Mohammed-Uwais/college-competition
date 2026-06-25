@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Competition Registry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">CAMPUS<span>COMP</span></div>
+        <button id="admin-portal-btn" class="btn-toggle">🔒 Admin Panel</button>
+    </header>
+
+    <!-- Main Registration Section -->
+    <section id="registration" class="registration">
+        <h2>Participant Registration</h2>
+        <p class="section-desc">Please fill out your parameters below to lock in your competition entry.</p>
+        
+        <form id="userForm">
+            <div class="input-group">
+                <input type="text" id="username" placeholder=" " required>
+                <label for="username">Full Name</label>
+            </div>
+            <div class="input-group">
+                <input type="number" id="age" min="15" max="99" placeholder=" " required>
+                <label for="age">Age</label>
+            </div>
+            <div class="input-group">
+                <input type="tel" id="phone" placeholder=" " required>
+                <label for="phone">Phone Number</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Email ID</label>
+            </div>
+            <button type="submit" class="btn-submit">Submit Entry</button>
+        </form>
+        
+        <p id="formFeedback" class="hidden"></p>
+    </section>
+
+    <!-- Hidden Password-Protected Admin Section -->
+    <section id="admin-section" class="registration hidden">
+        <h2>System Administration</h2>
+        <p class="section-desc">Query live local storage maps and export participant files directly to your machine storage.</p>
+        
+        <div class="registry-actions">
+            <button id="downloadDataBtn" class="btn-primary">📥 Download Excel CSV File</button>
+            <button id="clearDataBtn" class="btn-danger">🗑️ Clear Database</button>
+        </div>
+        
+        <div id="displayArea" class="display-box"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Campus Events. Engineered for high performance.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
